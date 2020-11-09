@@ -1,0 +1,70 @@
+﻿<Window x:Class="Vistas.WinVentaTicket"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WinVentaTicket" Height="470" Width="585" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+                
+
+  <FixedDocument>
+     <PageContent>
+        <FixedPage  Height="340" Width="540">
+
+        <!--INICIO CINEMA PARKING-->
+        <TextBlock Name="txbEmpresa" FixedPage.Left="10" FixedPage.Top="50" FontWeight="Bold" FontSize="20" FontFamily="Consolas" Text="CINEMA"/>
+        <TextBlock Name="txbEmpresa1" FixedPage.Left="10" FixedPage.Top="75" FontWeight="Bold" FontSize="14" FontFamily="Consolas" Text="PARKING"/>
+        <TextBlock Name="txbDireccion" FixedPage.Left="10" FixedPage.Top="95" FontFamily="Consolas" Text="Av. Exodo 346" />
+        <TextBlock Name="txbCiudad" FixedPage.Left="10" FixedPage.Top="115" FontFamily="Consolas" Text="S.S de Jujuy"/>
+                
+        <TextBlock Name="txbCUIT"  FixedPage.Left="120" FixedPage.Top="95" FontFamily="Consolas" Text="CUIT: 30-12345678-6"/>
+        <TextBlock Name="txbIIBB" FixedPage.Left="120" FixedPage.Top="115" FontFamily="Consolas" Text="IIBB: A-999"/>
+        <!--FIN CINEMA PARKING-->
+
+        <!--INICIO TICKET-->
+        <TextBlock Name="txbTicket" FixedPage.Left="300" FixedPage.Top="60" FontWeight="Bold" FontSize="20" FontFamily="Consolas" Text="TICKET"/>
+                
+        <Label Content="Número:" FixedPage.Left="295" FixedPage.Top="85"></Label>
+        <TextBlock Name="txbNumeroTicket"  FixedPage.Left="355" FixedPage.Top="93" Text="999" FontFamily="Consolas" />
+                
+        <Label Content="Fecha y Hora:" FixedPage.Left="295" FixedPage.Top="105"></Label>
+        <TextBlock Name="txbFechaHoraTicket" FixedPage.Left="380" FixedPage.Top="113" Text="28/09/2020" FontFamily="Consolas" />
+        <!--FIN TICKET-->
+
+        <!--INICIO PROYECCION-->
+        <TextBlock Name="txbProyeccion" FixedPage.Left="50" FixedPage.Top="150" FontWeight="Bold" FontSize="15" FontFamily="Arial" Text="Proyección"/>
+                
+        <Label Content="Pelicula:" FixedPage.Left="45" FixedPage.Top="170"></Label>
+        <TextBlock Name="txbPelicula" FixedPage.Left="100" FixedPage.Top="177" Text="Terminator II" FontFamily="Consolas" />
+
+        <Label Content="Fecha:" FixedPage.Left="45" FixedPage.Top="195"></Label>
+        <TextBlock Name="txbFechaProyeccion" FixedPage.Left="90" FixedPage.Top="202" Text="Viernes 23 de Octubre 2020" FontFamily="Consolas"/>
+
+        <Label Content="Hora:" FixedPage.Left="45" FixedPage.Top="220"></Label>
+        <TextBlock Name="txbHoraProyeccion" FixedPage.Left="85" FixedPage.Top="227" Text="20:30hs" FontFamily="Consolas"/>
+
+        <Label Content="Ubicacion:" FixedPage.Left="45" FixedPage.Top="245"></Label>
+        <TextBlock Name="txbUbicacionProyeccion" FixedPage.Left="110" FixedPage.Top="252" Text="Butaca A3" FontFamily="Consolas" />
+        <!--FIN PROYECCION-->
+
+        <!--INICIO CLIENTE-->
+        <TextBlock Name="txbCliente" FixedPage.Left="300" FixedPage.Top="150" FontWeight="Bold" FontSize="15" FontFamily="Arial" Text="Cliente"/>
+
+        <Label Content="Apellido:" FixedPage.Left="295" FixedPage.Top="170"></Label>
+        <TextBlock Name="txbApellidoCliente" FixedPage.Left="355" FixedPage.Top="177" Text="Perez" FontFamily="Consolas" />
+
+        <Label Content="Nombre:" FixedPage.Left="295" FixedPage.Top="195"></Label>
+        <TextBlock Name="txbNombreCliente" FixedPage.Left="355" FixedPage.Top="202" Text="Juan" FontFamily="Consolas"/>
+
+        <Label Content="DNI:" FixedPage.Left="295" FixedPage.Top="220"></Label>
+        <TextBlock Name="txbDNIcliente" FixedPage.Left="330" FixedPage.Top="227" Text="88888888" FontFamily="Consolas"/>
+        <!--FIN CLIENTE-->
+
+        <!--INICIO VENDEDOR-->
+        <Label Content="Vendedor:" FixedPage.Left="295" FixedPage.Top="280" FontSize="13"></Label>
+        <TextBlock Name="txbVendedor" FixedPage.Left="365" FixedPage.Top="288" Text="Valeria Garcia" FontFamily="Consolas"/>
+        <!--FIN VENDEDOR-->
+      </FixedPage>
+    </PageContent>
+ </FixedDocument>
+    
+</Window>
+
+

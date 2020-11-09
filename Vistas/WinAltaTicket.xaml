@@ -1,0 +1,62 @@
+﻿<Window x:Class="Vistas.WinAltaTicket"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:svc="clr-namespace:ClasesBase;assembly=ClasesBase"
+        xmlns:control="clr-namespace:Vistas.controlUsuario"
+        Title="Venta de Tickets" Height="500" Width="900" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Window.Resources>
+        
+    </Window.Resources>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Vistas;component/images/bg.jpg" />
+        </Grid.Background>
+        <StackPanel>
+            <!-- Inicio control de usuario barra de menu -->
+            <control:MenuVendedor x:Name="menuVendedor"/>
+            <!-- Fin control de usuario de la barra de menu -->
+            <Separator></Separator>
+            <!-- Inicio cuadro de TICKETS -->
+            <StackPanel Margin="10,0,10,10">
+                <StackPanel Margin="100,0,100,0">
+                    <Label Name="lblVendedor" Content="vendedor" Foreground="White" HorizontalAlignment="Right"></Label>
+                    <Label Name="lblTitulo" Content="VENTA DE TICKETS" Foreground="White" FontSize="20" HorizontalAlignment="Center"/>
+                    <Separator></Separator>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Name="stack_content" Margin="100,20,100,70" >
+                    <Border BorderBrush="LightGray" BorderThickness="2" CornerRadius="10">
+                        <StackPanel Orientation="Vertical" Cursor="Hand">
+                            
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Width="300" Margin="10">
+                                    <Label Name="lblProyeccion" Content="Seleccione Proyección:" Foreground="White" FontSize="14" FontWeight="Bold" />
+                                <ComboBox Name="cmbProyeccion" DisplayMemberPath="InfoProyeccion" SelectedValuePath="PRO_id" FontSize="13"></ComboBox>
+                                    <Label Name="lblButaca" Content="Seleccione Butaca:" Foreground="White" FontSize="14" FontWeight="Bold"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Cursor="No">
+                                    <Button Name="btnSeleccionButaca" Content="Seleccionar" Width="100" Click="btnSeleccionButaca_Click" Cursor="Hand"></Button>
+                                    <Label Name="lblFila" Content="Fila:" Foreground="White" FontSize="13" />
+                                    <TextBox Name="txtFila" Text="" Width="40" Height="27" Style="{StaticResource ResourceKey=EstiloTxb}" FontWeight="Bold" IsEnabled="False" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                    <Label Name="lblNumero" Content="Numero:" Foreground="White" FontSize="13" />
+                                    <TextBox Name="txtNumero" Text="" Width="40" Height="27" Style="{StaticResource ResourceKey=EstiloTxb}" FontWeight="Bold" IsEnabled="False" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                </StackPanel>                                                                       
+                                    <Label Name="lblCliente" Content="Cliente" Foreground="White" FontSize="14" FontWeight="Bold"/>
+                                <ComboBox Name="cmbCliente" DisplayMemberPath="APENOM" SelectedValuePath="CLI_id" FontSize="13"></ComboBox>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Cursor="No" HorizontalAlignment="Right">
+                                <Button Name="btnConfirmar" Content="CONFIRMAR" Margin="0,10,20,0" Style="{StaticResource ResourceKey=PlantillaBtnUsu}" Click="btnConfirmar_Click" IsEnabled="False"/>                                                                
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                    
+
+                    <Image Name="image1" Margin="20" Height="200" Source="/Vistas;component/images/logo-central2.png" OpacityMask="#C9000000" />
+
+                </StackPanel>
+            </StackPanel>
+            <!-- Fin cuadro de TICKETS -->
+
+        </StackPanel>
+
+    </Grid>
+</Window>

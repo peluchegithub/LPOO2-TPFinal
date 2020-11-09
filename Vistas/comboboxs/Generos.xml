@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<generos>
+  <tipo name="Accion"/>
+  <tipo name="Aventura"/>
+  <tipo name="Comedia"/>
+  <tipo name="Drama"/>
+  <tipo name="Terror"/>"
+  <tipo name="Musical"/>"
+  <tipo name="Sci-fi"/>"
+  <tipo name="Belica"/>"
+  <tipo name="Suspenso"/>"
+  <tipo name="Documental"/>"""""
+</generos>

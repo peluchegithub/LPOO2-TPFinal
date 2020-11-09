@@ -1,0 +1,49 @@
+﻿<Window x:Class="Vistas.WinAltaPelicula"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:control="clr-namespace:Vistas.controlUsuario"
+        Title="Cinemax - Administrador" Height="600" Width="900" ResizeMode="NoResize"
+        Icon="/Vistas;component/images/icono-cine.ico"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="/Vistas;component/images/bg.jpg" />
+        </Grid.Background>
+
+        <StackPanel>
+
+            <!-- Inicio control de usuario barra de menu -->
+            <control:MenuAdmin x:Name="menuAdmin"/>
+            <!-- Fin control de usuario de la barra de menu -->
+
+            <Separator></Separator>
+
+            <StackPanel Margin="300,20,300,20">
+
+                <!-- Inicio recurso para cargar los comboboxs -->
+                <StackPanel.Resources>
+                    <XmlDataProvider x:Key="combo_genero" Source="/comboboxs/Generos.xml" XPath="/generos"/>
+                    <XmlDataProvider x:Key="combo_clasificacion" Source="/comboboxs/Clasificaciones.xml" XPath="/clasificaciones"/>
+                </StackPanel.Resources>
+                <!-- Fin recurso para cargar los comboboxs -->
+                
+                <Label Name="lblTitulo" Content="ALTA DE PELICULA" Foreground="White" FontSize="20" HorizontalAlignment="Center"/>
+                <Separator></Separator>
+                <Label Name="lblTituloPeli" Content="Titulo" Foreground="White" Margin="0,10,0,0"/>
+                <TextBox Name="txtTitulo" Margin="0,0,0,0" Style="{StaticResource ResourceKey=EstiloTxb}"/>
+                <Label Name="lblDuracion" Content="Duracion" Foreground="White" Margin="0,10,0,0"/>
+                <TextBox Name="txtDuracion" Margin="0,0,0,0" Style="{StaticResource ResourceKey=EstiloTxb}"/>
+                <Label Name="lblGenero" Content="Genero" Foreground="White" Margin="0,10,0,0"/>
+                <ComboBox Name="cbxGenero" Margin="0,0,0,0" ItemsSource="{Binding Source={StaticResource combo_genero},XPath=tipo/@name}"/>
+                <Label Name="lblClasificacion" Content="Clasificacion" Foreground="White" Margin="0,10,0,0"/>
+                <ComboBox Name="cbxClasificacion" Margin="0,0,0,0" ItemsSource="{Binding Source={StaticResource combo_clasificacion},XPath=tipo/@name}"/>
+                <Label Name="lblError" Foreground="Red" Margin="0,10,0,0"/>
+                <Button Name="btnRegistrar" Content="Registrar" Margin="60,10,60,0" Click="btnRegistrar_Click" Style="{StaticResource ResourceKey=PlantillaBtn}"/>
+            </StackPanel>
+
+        </StackPanel>
+
+    </Grid>
+</Window>
