@@ -64,6 +64,7 @@
     <Compile Include="TrabajarClientes.cs" />
     <Compile Include="TrabajarPeliculas.cs" />
     <Compile Include="TrabajarProyecciones.cs" />
+    <Compile Include="TrabajarSalas.cs" />
     <Compile Include="TrabajarTickets.cs" />
     <Compile Include="TrabajarUsuarios.cs" />
     <Compile Include="modelo\Butaca.cs" />

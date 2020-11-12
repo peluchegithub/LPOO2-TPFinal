@@ -79,6 +79,9 @@
     <Compile Include="WinAltaCliente.xaml.cs">
       <DependentUpon>WinAltaCliente.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WinAltaClienteMini.xaml.cs">
+      <DependentUpon>WinAltaClienteMini.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WinAltaPelicula.xaml.cs">
       <DependentUpon>WinAltaPelicula.xaml</DependentUpon>
     </Compile>
@@ -142,12 +145,12 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="estilosYplantillas\EstilosGenerales.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="estilosYplantillas\PlantillasGenerales.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="VistaPreviaImpresion.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -162,6 +165,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WinAltaCliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinAltaClienteMini.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -310,6 +317,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\movie_remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="comboboxs\Salas.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\client_add.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

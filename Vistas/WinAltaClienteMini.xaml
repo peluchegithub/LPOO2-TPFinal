@@ -1,0 +1,92 @@
+﻿<Window x:Class="Vistas.WinAltaClienteMini"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:svc="clr-namespace:ClasesBase;assembly=ClasesBase"
+        Title="WinAltaClienteMini" Height="450" Width="340" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="DATA_CLIENTE" ObjectType="{x:Type svc:TrabajarClientes}" MethodName="TraerCliente" />
+
+        <ControlTemplate x:Key="TextBoxErrorTemplate">
+            <DockPanel>
+                <Ellipse DockPanel.Dock="Right" Margin="280,4" Width="10" Height="10">
+                    <Ellipse.Fill>
+                        <LinearGradientBrush>
+                            <GradientStop Color="#11FF1111" Offset="0"/>
+                            <GradientStop Color="#FFFF0000" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+            </DockPanel>
+        </ControlTemplate>
+
+        <Style x:Key="EstiloError" TargetType="TextBox">
+            <Setter Property="FontSize" Value="12"></Setter>
+            <Setter Property="Background" Value="Black"></Setter>
+            <Setter Property="Foreground" Value="#FF9800"></Setter>
+            <Setter Property="CaretBrush" Value="White"></Setter>
+            <Setter Property="Margin" Value="4,4,10,4"/>
+            <Setter Property="Validation.ErrorTemplate" Value="{StaticResource TextBoxErrorTemplate}"/>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip">
+                        <Setter.Value>
+                            <Binding Path="(Validation.Errors)[0].ErrorContent" RelativeSource="{x:Static RelativeSource.Self}"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </Window.Resources>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Vistas;component/images/bg.jpg" />
+        </Grid.Background>
+        <Border BorderBrush="LightGray" BorderThickness="2" CornerRadius="10" Margin="10">
+            <StackPanel>
+
+                <Label Name="lblTitulo" Content="AGREGAR CLIENTE" Foreground="White" FontSize="20" HorizontalAlignment="Center"/>
+                <Separator></Separator>
+                <StackPanel>                    
+                    <Label Name="lblApellido" Content="Apellido" Foreground="White" Margin="0,10,0,0"/>
+                    <TextBox Name="txtApellido" DataContext="{StaticResource DATA_CLIENTE}" Style="{StaticResource EstiloError}">
+                        <TextBox.Text>
+                            <Binding Path="Cli_Apellido" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" ValidatesOnDataErrors="True"/>
+                        </TextBox.Text>
+                    </TextBox>
+                    <Label Name="lblNombre" Content="Nombre" Foreground="White" Margin="0,10,0,0"/>
+                    <TextBox Name="txtNombre" DataContext="{StaticResource DATA_CLIENTE}" Style="{StaticResource EstiloError}">
+                        <TextBox.Text>
+                            <Binding Path="Cli_Nombre" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" ValidatesOnDataErrors="True"/>
+                        </TextBox.Text>
+                    </TextBox>
+                    <Label Name="lblDni" Content="Dni" Foreground="White" Margin="0,10,0,0"/>
+                    <TextBox Name="txtDni" DataContext="{StaticResource DATA_CLIENTE}" Style="{StaticResource EstiloError}" PreviewTextInput="txtDni_PreviewTextInput">
+                        <TextBox.Text>
+                            <Binding Path="Cli_Dni" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" ValidatesOnDataErrors="True"/>
+                        </TextBox.Text>
+                    </TextBox>
+                    <Label Name="lblEmail" Content="Email" Foreground="White" Margin="0,10,0,0"/>
+                    <TextBox Name="txtEmail" DataContext="{StaticResource DATA_CLIENTE}" Style="{StaticResource EstiloError}">
+                        <TextBox.Text>
+                            <Binding Path="Cli_Email" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" ValidatesOnDataErrors="True"/>
+                        </TextBox.Text>
+                    </TextBox>
+                    <Label Name="lblTelefono" Content="Telefono" Foreground="White" Margin="0,10,0,0"/>
+                    <TextBox Name="txtTelefono" DataContext="{StaticResource DATA_CLIENTE}" Style="{StaticResource EstiloError}">
+                        <TextBox.Text>
+                            <Binding Path="Cli_Telefono" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" ValidatesOnDataErrors="True"/>
+                        </TextBox.Text>
+                    </TextBox>
+                    <Label Name="lblError" Foreground="Red" Margin="0,10,0,0"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Name="btnCancelar" Content="CANCELAR" Margin="50,10,0,0" Style="{StaticResource ResourceKey=PlantillaBtn}" Click="btnCancelar_Click" />
+                        <Button Name="btnRegistrar" Content="AGREGAR" Margin="40,10,0,0" Style="{StaticResource ResourceKey=PlantillaBtn}" Click="btnRegistrar_Click" />
+                    </StackPanel>                    
+                </StackPanel>
+
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

@@ -30,16 +30,37 @@ namespace Vistas
             cmbCliente.ItemsSource = TrabajarClientes.TraerClientesCombo().DefaultView;
             cmbCliente.SelectedIndex=0;
 
+            lblVendedor.Content = "vendedor";
+            
+            dateProyeccion.DisplayDateStart = DateTime.Today;
+            dateProyeccion.SelectedDate = DateTime.Today;
+            dateProyeccion.Text = "Seleccione...";
+            dateProyeccion.SelectedDate = null;
+
             cmbProyeccion.ItemsSource = TrabajarProyecciones.TraerProyeccionesCombo().DefaultView;
             cmbProyeccion.SelectedIndex = 0;
+            cbxSalas.SelectedIndex = 0;
 
-            lblVendedor.Content = "vendedor";
+            if (cmbProyeccion.Items.Count == 0)
+            {
+                cmbProyeccion.ToolTip = "NO se encontraron proyecciones para HOY ni futuras.";
+            }
         }
 
         private void btnSeleccionButaca_Click(object sender, RoutedEventArgs e)
         {
-            WinButacasMini oWinButacasMini = new WinButacasMini();
-            oWinButacasMini.ShowDialog();
+            if (cmbProyeccion.SelectedValue != null)
+            {
+                WinButacasMini oWinButacasMini = new WinButacasMini();
+                oWinButacasMini.tipo = cmbProyeccion.Text.Split('-')[0];
+                oWinButacasMini.idProyeccion = (int)cmbProyeccion.SelectedValue;
+                oWinButacasMini.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Primero seleccione una Proyeccion Por Favor");
+            }
+            
         }
 
         private void btnConfirmar_Click(object sender, RoutedEventArgs e)
@@ -53,6 +74,9 @@ namespace Vistas
                 oTicket.But_Numero = int.Parse(txtNumero.Text);
                 oTicket.Cli_Id = int.Parse(cmbCliente.SelectedValue.ToString());
                 oTicket.Pro_Id = int.Parse(cmbProyeccion.SelectedValue.ToString());
+                //Butaca Ocupada
+                int? idSala = TrabajarSalas.TraerIdSalaSegunIdProyeccion(oTicket.Pro_Id);
+                TrabajarButacas.CambiarEstadoButaca(oTicket.But_Fila, oTicket.But_Numero, idSala);
                 //Guardar en BASE
                 IdTicket=TrabajarTickets.AgregarTicket(oTicket);
                 oTicket.Tic_Id = IdTicket;
@@ -73,6 +97,48 @@ namespace Vistas
                 
             }
         }
+
+        private void cbxSalas_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbxSalas.SelectedValue != null)
+            {               
+                string seleccionSala = cbxSalas.SelectedValue.ToString();
+
+                if (seleccionSala == "Todas")
+                {                
+                    cmbProyeccion.ItemsSource = TrabajarProyecciones.TraerProyeccionesCombo().DefaultView;
+                }else{
+                    cmbProyeccion.ItemsSource = TrabajarProyecciones.TraerProyeccionesComboFiltroSala(seleccionSala).DefaultView;                    
+                }
+                dateProyeccion.Text = "Seleccione...";
+                dateProyeccion.SelectedDate = null;
+                cmbProyeccion.SelectedIndex = 0;
+            }
+        }
+
+        private void dateProyeccion_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DateTime? fechaSeleccionada = dateProyeccion.SelectedDate;
+            if (fechaSeleccionada.HasValue)
+            {
+                cbxSalas.SelectedIndex = -1;
+                cmbProyeccion.ItemsSource = TrabajarProyecciones.TraerProyeccionesComboFiltroFecha(fechaSeleccionada).DefaultView;                
+                cmbProyeccion.SelectedIndex = 0;
+            }            
+        }
+
+        private void btnAgregarCliente_Click(object sender, RoutedEventArgs e)
+        {
+            WinAltaClienteMini oWinAltaClienteMini = new WinAltaClienteMini();
+            
+            bool respuesta = (bool)oWinAltaClienteMini.ShowDialog();
+            if (respuesta)//si guardó nuevo cliente, tengo que actualizar el combo Clientes
+            {
+                cmbCliente.ItemsSource = TrabajarClientes.TraerClientesCombo().DefaultView;
+                cmbCliente.SelectedIndex = 0;
+            }
+        }
+
 
     }
 }

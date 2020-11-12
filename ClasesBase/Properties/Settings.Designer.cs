@@ -26,9 +26,8 @@ namespace ClasesBase.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;AttachDbFilename=\"E:\\usuarios\\alumno\\Escritorio\\LABPoo2-" +
-            "2020\\tp entregado\\TP4-GRUPO2\\cines.mdf\";Integrated Security=True;Connect Timeout" +
-            "=30;User Instance=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;AttachDbFilename=C:\\Users\\54113\\Documents\\LPOO2-TPFinal\\" +
+            "BD\\cines.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True")]
         public string cinesConnectionString {
             get {
                 return ((string)(this["cinesConnectionString"]));

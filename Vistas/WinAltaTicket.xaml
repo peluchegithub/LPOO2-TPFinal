@@ -28,19 +28,33 @@
                     <Border BorderBrush="LightGray" BorderThickness="2" CornerRadius="10">
                         <StackPanel Orientation="Vertical" Cursor="Hand">
                             
-                                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Width="300" Margin="10">
-                                    <Label Name="lblProyeccion" Content="Seleccione Proyección:" Foreground="White" FontSize="14" FontWeight="Bold" />
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Width="350" Margin="10">
+                                <StackPanel Orientation="Horizontal">
+                                    <!-- Inicio recurso para cargar los comboboxs -->
+                                    <StackPanel.Resources>
+                                        <XmlDataProvider x:Key="combo_sala" Source="/comboboxs/Salas.xml" XPath="/salas"/>
+                                    </StackPanel.Resources>
+                                    <!-- Fin recurso para cargar los comboboxs -->
+                                    <Label Name="lblProyeccion" Content="Proyección:" Foreground="White" FontSize="14" FontWeight="Bold" />
+                                    <ComboBox Name="cbxSalas" ItemsSource="{Binding Source={StaticResource combo_sala},XPath=tipo/@name}" FontWeight="Bold" Width="80" Height="20" SelectionChanged="cbxSalas_SelectionChanged" ToolTip="Filtrar por Sala"/>
+                                    <DatePicker Height="24" Name="dateProyeccion" Width="183" Text="Fecha de Proyeccion" IsEnabled="True" Focusable="False" HorizontalContentAlignment="Right" SelectedDateChanged="dateProyeccion_SelectedDateChanged" BorderBrush="Transparent" ToolTip="Filtrar por Sala"/>
+                                </StackPanel>
                                 <ComboBox Name="cmbProyeccion" DisplayMemberPath="InfoProyeccion" SelectedValuePath="PRO_id" FontSize="13"></ComboBox>
-                                    <Label Name="lblButaca" Content="Seleccione Butaca:" Foreground="White" FontSize="14" FontWeight="Bold"/>
+                                    <Label Name="lblButaca" Content="Butaca:" Foreground="White" FontSize="14" FontWeight="Bold" Margin="0,5,0,0"/>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Cursor="No">
-                                    <Button Name="btnSeleccionButaca" Content="Seleccionar" Width="100" Click="btnSeleccionButaca_Click" Cursor="Hand"></Button>
+                                    <Button Name="btnSeleccionButaca" Content="Seleccionar" Width="100" Click="btnSeleccionButaca_Click" Style="{StaticResource ResourceKey=PlantillaBtn}" Cursor="Hand"></Button>
                                     <Label Name="lblFila" Content="Fila:" Foreground="White" FontSize="13" />
                                     <TextBox Name="txtFila" Text="" Width="40" Height="27" Style="{StaticResource ResourceKey=EstiloTxb}" FontWeight="Bold" IsEnabled="False" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                                     <Label Name="lblNumero" Content="Numero:" Foreground="White" FontSize="13" />
                                     <TextBox Name="txtNumero" Text="" Width="40" Height="27" Style="{StaticResource ResourceKey=EstiloTxb}" FontWeight="Bold" IsEnabled="False" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                                 </StackPanel>                                                                       
                                     <Label Name="lblCliente" Content="Cliente" Foreground="White" FontSize="14" FontWeight="Bold"/>
-                                <ComboBox Name="cmbCliente" DisplayMemberPath="APENOM" SelectedValuePath="CLI_id" FontSize="13"></ComboBox>
+                                <StackPanel Orientation="Horizontal">                                            
+                                    <ComboBox Name="cmbCliente" DisplayMemberPath="APENOM" SelectedValuePath="CLI_id" FontSize="13" Width="318" Height="25"></ComboBox>
+                                    <Button Name="btnAgregarCliente" Background="Transparent" BorderBrush="Transparent" Margin="5 0 0 0" ToolTip="Agregar Cliente si no está en la lista" Click="btnAgregarCliente_Click">
+                                        <Image Source="/images/client_add.png" Height="25" ></Image>
+                                    </Button>
+                                </StackPanel>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Cursor="No" HorizontalAlignment="Right">

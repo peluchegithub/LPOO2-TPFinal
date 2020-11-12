@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Vistas.WinButacasMini"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="WinButacasMini" Height="440" Width="320" ResizeMode="NoResize" WindowStyle="None" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+        Title="WinButacasMini" Height="540" Width="350" ResizeMode="NoResize" WindowStyle="None" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
          
 <Grid>        
         <Grid.Background>
@@ -21,8 +21,11 @@
                     <ColumnDefinition Width="50"></ColumnDefinition>
                     <ColumnDefinition Width="50"></ColumnDefinition>
                     <ColumnDefinition Width="50"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
@@ -32,39 +35,22 @@
                     <RowDefinition Height="50"></RowDefinition>
                 </Grid.RowDefinitions>
                 
+                <Label  Content="PANTALLA" Grid.ColumnSpan="5" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="Gray" FontSize="20" Name="lblPantalla" />
+                <Label Content="A" Grid.Row="1" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="white" FontSize="20" FontWeight="Bold"/>                
 
-                <Label Content="PANTALLA" Grid.ColumnSpan="4" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="Gray" FontSize="20"/>
-                <Label Content="A" Grid.Row="1" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="white" FontSize="20" FontWeight="Bold"/>
-                <Button Name="A1" Grid.Row="1" Grid.Column="1" Background="LightGray" Click="botonButaca_Click">A1</Button>
-                <Button Name="A2" Grid.Row="1" Grid.Column="2" Background="LightGray" Click="botonButaca_Click">A2</Button>
-                <Button Name="A3" Grid.Row="1" Grid.Column="3" Background="LightGray" Click="botonButaca_Click">A3</Button>
-                <Button Name="A4" Grid.Row="1" Grid.Column="4" Background="LightGray" Click="botonButaca_Click">A4</Button>
+                <Label Content="B" Grid.Row="2" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="white" FontSize="20" FontWeight="Bold"/>                
 
-                <Label Content="B" Grid.Row="2" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="white" FontSize="20" FontWeight="Bold"/>
-                <Button Name="B1" Grid.Row="2" Grid.Column="1" Background="LightGray" Click="botonButaca_Click">B1</Button>
-                <Button Name="B2" Grid.Row="2" Grid.Column="2" Background="LightGray" Click="botonButaca_Click">B2</Button>
-                <Button Name="B3" Grid.Row="2" Grid.Column="3" Background="LightGray" Click="botonButaca_Click">B3</Button>
-                <Button Name="B4" Grid.Row="2" Grid.Column="4" Background="LightGray" Click="botonButaca_Click">B4</Button>
-
-                <Label Content="C" Grid.Row="3" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="white" FontSize="20" FontWeight="Bold"/>
-                <Button Name="C1" Grid.Row="3" Grid.Column="1" Background="LightGray" Click="botonButaca_Click">C1</Button>
-                <Button Name="C2" Grid.Row="3" Grid.Column="2" Background="LightGray" Click="botonButaca_Click">C2</Button>
-                <Button Name="C3" Grid.Row="3" Grid.Column="3" Background="LightGray" Click="botonButaca_Click">C3</Button>
-                <Button Name="C4" Grid.Row="3" Grid.Column="4" Background="LightGray" Click="botonButaca_Click">C4</Button>
+                <Label Content="C" Grid.Row="3" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="white" FontSize="20" FontWeight="Bold"/>                
 
                 <Label Content="D" Grid.Row="4" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="white" FontSize="20" FontWeight="Bold"/>
-                <Button Name="D1" Grid.Row="4" Grid.Column="1" Background="LightGray" Click="botonButaca_Click">D1</Button>
-                <Button Name="D2" Grid.Row="4" Grid.Column="2" Background="LightGray" Click="botonButaca_Click">D2</Button>
-                <Button Name="D3" Grid.Row="4" Grid.Column="3" Background="LightGray" Click="botonButaca_Click">D3</Button>
-                <Button Name="D4" Grid.Row="4" Grid.Column="4" Background="LightGray" Click="botonButaca_Click">D4</Button>
 
-                <Label Content="E" Grid.Row="5" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="white" FontSize="20" FontWeight="Bold"/>
-                <Button Name="E1" Grid.Row="5" Grid.Column="1" Background="LightGray" Click="botonButaca_Click">E1</Button>
-                <Button Name="E2" Grid.Row="5" Grid.Column="2" Background="LightGray" Click="botonButaca_Click">E2</Button>
-                <Button Name="E3" Grid.Row="5" Grid.Column="3" Background="LightGray" Click="botonButaca_Click">E3</Button>
-                <Button Name="E4" Grid.Row="5" Grid.Column="4" Background="LightGray" Click="botonButaca_Click">E4</Button>
+                <Label Content="E" Grid.Row="5" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="white" FontSize="20" FontWeight="Bold"/>                
 
-                <Button Name="btnCancelar" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="4" Content="CANCELAR" Margin="0,10" Click="btnCancelar_Click"></Button>
+                <Label Content="F" Grid.Row="6" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="white" FontSize="20" FontWeight="Bold" Name="lblFilaF" />
+
+                <Label Content="G" Grid.Row="7" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="white" FontSize="20" FontWeight="Bold" Name="lblFilaG" />
+
+                    <Button Name="btnCancelar" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="5" Content="CANCELAR" Margin="0,10" Click="btnCancelar_Click" Style="{StaticResource ResourceKey=PlantillaBtnGrande}"></Button>
             </Grid>
             
         </StackPanel>
