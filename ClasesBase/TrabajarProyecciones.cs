@@ -66,5 +66,27 @@ namespace ClasesBase
             da.Fill(dt);
             return dt;
         }
+
+        //TRAE el PRECIO de una PROYECCION SEGUN IDPRoyeccion DE WIN ALTA TICKETS (VENTA DE TICKETS)    
+        public static decimal TraerPrecioProyeccionPorID(int idProyeccion)
+        {
+            decimal precio=0;//default
+
+            SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.cinesConnectionString);
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "SELECT PRO_precio FROM Proyeccion WHERE PRO_id=@id";
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = cnn;
+            cmd.Parameters.AddWithValue("@id", idProyeccion);
+            cnn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                precio = (decimal)reader["PRO_precio"];                  
+            }
+            cnn.Close();
+
+            return precio;
+        }
     }
 }

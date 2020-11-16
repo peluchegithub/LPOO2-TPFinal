@@ -55,6 +55,17 @@ namespace ClasesBase
             }
         }
 
+        private string usu_Estado;
+
+        public string Usu_Estado
+        {
+            get { return usu_Estado; }
+            set
+            {
+                usu_Estado = value;
+            }
+        }
+
         //Implementacion de la interface IDataErrorInfo
         public string Error
         {

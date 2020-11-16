@@ -40,6 +40,7 @@ namespace ClasesBase
                 oUsuario.Usu_ApellidoNombre = (string)reader["USU_apellidoNombre"];
                 oUsuario.Usu_Username = (string)reader["USU_username"];
                 oUsuario.Usu_Password = (string)reader["USU_password"];
+                oUsuario.Usu_Estado = (string)reader["USU_estado"];
                 oRol.Rol_Id = (int)reader["ROL_id"];
                 if (oRol.Rol_Id == 1)
                 {
@@ -63,6 +64,7 @@ namespace ClasesBase
             cmd.Parameters.AddWithValue("@rol", usuario.Usu_Rol.Rol_Id);
             cmd.Parameters.AddWithValue("@username", usuario.Usu_Username);
             cmd.Parameters.AddWithValue("@password", usuario.Usu_Password);
+            cmd.Parameters.AddWithValue("@estado", usuario.Usu_Estado);
             cnn.Open();
             cmd.ExecuteNonQuery();
             cnn.Close();
@@ -75,7 +77,7 @@ namespace ClasesBase
                 SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.cinesConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = @"DELETE Usuario where USU_id = @id";
+                cmd.CommandText = @"UPDATE Usuario SET USU_estado='Inactivo' WHERE USU_id = @id";
                 cmd.Connection = cnn;
                 cmd.Parameters.AddWithValue("@id", id);
                 cnn.Open();
@@ -103,6 +105,7 @@ namespace ClasesBase
             cmd.Parameters.AddWithValue("@pass", usuario.Usu_Password);
             cmd.Parameters.AddWithValue("@ayn", usuario.Usu_ApellidoNombre);
             cmd.Parameters.AddWithValue("@rol", usuario.Usu_Rol.Rol_Id);
+            cmd.Parameters.AddWithValue("@estado", usuario.Usu_Estado);
 
             cnn.Open();
             cmd.ExecuteNonQuery();

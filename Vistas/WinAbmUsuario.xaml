@@ -35,7 +35,8 @@
                     <!-- Inicio recurso para cargar los comboboxs -->
                     <StackPanel.Resources>
                         <XmlDataProvider x:Key="combo_rol" Source="/comboboxs/Roles.xml" XPath="/roles"/>
-                    </StackPanel.Resources>
+                        <XmlDataProvider x:Key="combo_estado" Source="/comboboxs/Estados.xml" XPath="/estados"/>
+                    </StackPanel.Resources>                    
                     <!-- Fin recurso para cargar los comboboxs -->
                     <Border BorderBrush="LightGray" BorderThickness="2" CornerRadius="10">
                         <StackPanel Orientation="Vertical" >
@@ -67,6 +68,7 @@
                         <Label Name="lblUsername" Content="Usuario" Foreground="White" Width="110"/>
                         <Label Name="lblPassword" Content="Contraseña" Foreground="White" Width="110"/>
                         <Label Name="lblRol" Content="Rol" Foreground="White" Width="110"/>
+                        <Label Name="lblEstado" Content="Estado" Foreground="White" Width="110"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Vertical" Margin="10">
@@ -76,6 +78,7 @@
                         <TextBox Name="txtusername" Text="{Binding Usu_Username}" Width="150" Height="27" Style="{StaticResource ResourceKey=EstiloTxb}" KeyDown="txtusername_KeyDown" />
                         <TextBox Name="txtPassword" Text="{Binding Usu_Password}" Width="150" Height="27" Style="{StaticResource ResourceKey=EstiloTxb}" KeyDown="txtPassword_KeyDown" />
                         <ComboBox Name="cbxRol" Margin="0,0,0,0" ItemsSource="{Binding Source={StaticResource combo_rol},XPath=tipo/@name}" SelectedValue="{Binding Usu_Rol.Rol_Descripcion}" SelectionChanged="cbxRol_SelectionChanged" />
+                        <ComboBox Name="cbxEstado" Margin="0,0,0,0" ItemsSource="{Binding Source={StaticResource combo_estado},XPath=tipo/@name}" SelectedValue="{Binding Usu_Estado}" SelectionChanged="cbxRol_SelectionChanged" />
                     </StackPanel>
 
                     <Image Name="image1" Height="150"  Width="210" Source="/Vistas;component/images/logo-central.png" OpacityMask="#C9000000" />
