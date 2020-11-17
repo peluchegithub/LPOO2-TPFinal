@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<horarios>
+  <tipo name="15:00"/>
+  <tipo name="16:00"/>
+  <tipo name="17:00"/>
+  <tipo name="18:00"/>
+  <tipo name="19:00"/>"
+  <tipo name="20:00"/>"
+  <tipo name="20:30"/>"
+  <tipo name="21:30"/>"
+  <tipo name="22:00"/>"
+  <tipo name="22:30"/>"""""
+</horarios>

@@ -24,150 +24,49 @@
                     <Label Name="lblTitulo" Content="VENTA DE TICKETS" Foreground="White" FontSize="20" HorizontalAlignment="Center"/>
                     <Separator></Separator>
                 </StackPanel>
-                
-                    <!--Inicio Stack Panel Principal-->
-                    <StackPanel Orientation="Horizontal" Margin="30,20,30,70" Cursor="Hand">
-                        <StackPanel Name="Grilla" Width="570" >
-                        <Border BorderBrush="LightGray" BorderThickness="2" CornerRadius="10">
-                            <StackPanel Orientation="Horizontal">
-                            <StackPanel Orientation="Vertical" Cursor="Hand">                                
+                <StackPanel Orientation="Horizontal" Name="stack_content" Margin="100,20,100,70" >
+                    <Border BorderBrush="LightGray" BorderThickness="2" CornerRadius="10">
+                        <StackPanel Orientation="Vertical" Cursor="Hand">
+                            
                                 <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Width="350" Margin="10">
-                                    <StackPanel Orientation="Horizontal">
-                                        <!-- Inicio recurso para cargar los comboboxs -->
-                                        <StackPanel.Resources>
-                                            <XmlDataProvider x:Key="combo_sala" Source="/comboboxs/Salas.xml" XPath="/salas"/>
-                                        </StackPanel.Resources>
-                                        <!-- Fin recurso para cargar los comboboxs -->
-                                        <Label Name="lblProyeccion" Content="Proyección:" Foreground="White" FontSize="14" FontWeight="Bold" />
-                                        <ComboBox Name="cbxSalas" ItemsSource="{Binding Source={StaticResource combo_sala},XPath=tipo/@name}" FontWeight="Bold" Width="80" Height="20" SelectionChanged="cbxSalas_SelectionChanged" ToolTip="Filtrar por Sala"/>
-                                        <DatePicker Height="24" Name="dateProyeccion" Width="190" Text="Fecha de Proyeccion" IsEnabled="True" Focusable="False" HorizontalContentAlignment="Right" SelectedDateChanged="dateProyeccion_SelectedDateChanged" BorderBrush="Transparent" ToolTip="Filtrar por Fecha"/>
-                                    </StackPanel>
-                                    <ComboBox Name="cmbProyeccion" DisplayMemberPath="InfoProyeccion" SelectedValuePath="PRO_id" FontSize="13" Panel.ZIndex="1000" SelectionChanged="cmbProyeccion_SelectionChanged"></ComboBox>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Label Name="lblPrecio" Content="Precio: $" Foreground="White" FontSize="14" FontWeight="Bold" Margin="0,5,0,0"/>
-                                        <TextBox Name="txtPrecio" Text="1000" Width="40" Height="27" Style="{StaticResource ResourceKey=EstiloTxb}" FontWeight="Bold" IsEnabled="False" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                                    </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <!-- Inicio recurso para cargar los comboboxs -->
+                                    <StackPanel.Resources>
+                                        <XmlDataProvider x:Key="combo_sala" Source="/comboboxs/Salas.xml" XPath="/salas"/>
+                                    </StackPanel.Resources>
+                                    <!-- Fin recurso para cargar los comboboxs -->
+                                    <Label Name="lblProyeccion" Content="Proyección:" Foreground="White" FontSize="14" FontWeight="Bold" />
+                                    <ComboBox Name="cbxSalas" ItemsSource="{Binding Source={StaticResource combo_sala},XPath=tipo/@name}" FontWeight="Bold" Width="80" Height="20" SelectionChanged="cbxSalas_SelectionChanged" ToolTip="Filtrar por Sala"/>
+                                    <DatePicker Height="24" Name="dateProyeccion" Width="183" Text="Fecha de Proyeccion" IsEnabled="True" Focusable="False" HorizontalContentAlignment="Right" SelectedDateChanged="dateProyeccion_SelectedDateChanged" BorderBrush="Transparent" ToolTip="Filtrar por Sala"/>
+                                </StackPanel>
+                                <ComboBox Name="cmbProyeccion" DisplayMemberPath="InfoProyeccion" SelectedValuePath="PRO_id" FontSize="13"></ComboBox>
                                     <Label Name="lblButaca" Content="Butaca:" Foreground="White" FontSize="14" FontWeight="Bold" Margin="0,5,0,0"/>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Cursor="No">
-                                        <!--<Button Name="btnSeleccionButaca" Content="Seleccionar" Width="100" Click="btnSeleccionButaca_Click" Style="{StaticResource ResourceKey=PlantillaBtn}" Cursor="Hand"></Button>-->
-                                            <ToggleButton x:Name="ButacasToggleButton" Content="Seleccionar" ToolTip="Seleccionar Butacas" Background="#FF9800" BorderBrush="Black" BorderThickness="2" Checked="ButacasToggleButton_Checked" Unchecked="ButacasToggleButton_Unchecked">                                                
-                                                <ToggleButton.Triggers>
-                                                    <EventTrigger RoutedEvent="ToggleButton.Unchecked">
-                                                        <BeginStoryboard>
-                                                            <Storyboard>
-                                                                <ThicknessAnimation Storyboard.TargetName="hideable" Storyboard.TargetProperty="Margin" From="0,0,0,0" To="110,0,0,0" DecelerationRatio=".9" Duration="0:0:1" />
-                                                                <ThicknessAnimation Storyboard.TargetName="Grilla" Storyboard.TargetProperty="Margin" From="0,0,0,0" To="110,0,0,0" DecelerationRatio=".9" Duration="0:0:1" />
-                                                            </Storyboard>
-                                                        </BeginStoryboard>
-                                                    </EventTrigger>
-                                                    <EventTrigger RoutedEvent="ToggleButton.Checked">
-                                                        <BeginStoryboard>
-                                                            <Storyboard>
-                                                                <ThicknessAnimation Storyboard.TargetName="hideable" Storyboard.TargetProperty="Margin" From="110,0,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:1" />
-                                                                <ThicknessAnimation Storyboard.TargetName="Grilla" Storyboard.TargetProperty="Margin" From="110,0,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:1" />
-                                                            </Storyboard>
-                                                        </BeginStoryboard>
-                                                    </EventTrigger>
-                                                </ToggleButton.Triggers>
-                                            </ToggleButton>
-                                            <Label Name="lblFila" Content="Fila:" Foreground="White" FontSize="13" />
-                                        <TextBox Name="txtFila" Text="" Width="40" Height="27" Style="{StaticResource ResourceKey=EstiloTxb}" FontWeight="Bold" IsEnabled="False" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                                        <Label Name="lblNumero" Content="Numero:" Foreground="White" FontSize="13" />
-                                        <TextBox Name="txtNumero" Text="" Width="40" Height="27" Style="{StaticResource ResourceKey=EstiloTxb}" FontWeight="Bold" IsEnabled="False" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                                    </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Cursor="No">
+                                    <Button Name="btnSeleccionButaca" Content="Seleccionar" Width="100" Click="btnSeleccionButaca_Click" Style="{StaticResource ResourceKey=PlantillaBtn}" Cursor="Hand"></Button>
+                                    <Label Name="lblFila" Content="Fila:" Foreground="White" FontSize="13" />
+                                    <TextBox Name="txtFila" Text="" Width="40" Height="27" Style="{StaticResource ResourceKey=EstiloTxb}" FontWeight="Bold" IsEnabled="False" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                    <Label Name="lblNumero" Content="Numero:" Foreground="White" FontSize="13" />
+                                    <TextBox Name="txtNumero" Text="" Width="40" Height="27" Style="{StaticResource ResourceKey=EstiloTxb}" FontWeight="Bold" IsEnabled="False" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                </StackPanel>                                                                       
                                     <Label Name="lblCliente" Content="Cliente" Foreground="White" FontSize="14" FontWeight="Bold"/>
-                                    <StackPanel Orientation="Horizontal">
-                                        <ComboBox Name="cmbCliente" DisplayMemberPath="APENOM" SelectedValuePath="CLI_id" FontSize="13" Width="318" Height="25"></ComboBox>
-                                        <Button Name="btnAgregarCliente" Background="Transparent" BorderBrush="Transparent" Margin="5 0 0 0" ToolTip="Agregar Cliente si no está en la lista" Click="btnAgregarCliente_Click">
-                                            <Image Source="/images/client_add.png" Height="25" ></Image>
-                                        </Button>
-                                    </StackPanel>
-                                </StackPanel>
-
-                                <StackPanel Orientation="Horizontal" Cursor="No" HorizontalAlignment="Right">
-                                    
+                                <StackPanel Orientation="Horizontal">                                            
+                                    <ComboBox Name="cmbCliente" DisplayMemberPath="APENOM" SelectedValuePath="CLI_id" FontSize="13" Width="318" Height="25"></ComboBox>
+                                    <Button Name="btnAgregarCliente" Background="Transparent" BorderBrush="Transparent" Margin="5 0 0 0" ToolTip="Agregar Cliente si no está en la lista" Click="btnAgregarCliente_Click">
+                                        <Image Source="/images/client_add.png" Height="25" ></Image>
+                                    </Button>
                                 </StackPanel>
                             </StackPanel>
-                                <StackPanel Orientation="Vertical" Cursor="No">
-                                    <Image Source="images\logo-central2.png" Height="150" Margin="-10,20,0,0" HorizontalAlignment="Center" Cursor="Arrow"></Image>
-                                    <Button Name="btnConfirmar" Content="CONFIRMAR" Margin="5,20,25,20" Style="{StaticResource ResourceKey=PlantillaBtnGrande}" Click="btnConfirmar_Click" IsEnabled="False"/>
-                                </StackPanel>
-                                
-                            </StackPanel>
-                        </Border>
-                    </StackPanel>
-                        <!--STACK PANEL BOTONES AGREGAR ELIMINAR-->
-                        <StackPanel Orientation="Vertical" Width="30">
 
+                            <StackPanel Orientation="Horizontal" Cursor="No" HorizontalAlignment="Right">
+                                <Button Name="btnConfirmar" Content="CONFIRMAR" Margin="0,10,20,0" Style="{StaticResource ResourceKey=PlantillaBtnUsu}" Click="btnConfirmar_Click" IsEnabled="False"/>                                                                
+                            </StackPanel>
                         </StackPanel>
-                        <!--STACK PANEL LATERAL-->
-                        <StackPanel Width="210" x:Name="hideable">                           
-                            <Border BorderBrush="LightGray" BorderThickness="2" CornerRadius="10">
-                                <StackPanel>                                
-                                <StackPanel>
-                                    <Label Name="lblTituloButacas" Content="SELECCIONE BUTACA" Foreground="White" FontSize="18" HorizontalAlignment="Center"/>
-                                    <Separator></Separator>
-                                    <Label  Content="PANTALLA" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="Gray" FontSize="18" Name="lblPantalla" Margin="30,0,26,0"/>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Grid Name="gridColumnasLabel">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="30"></ColumnDefinition>
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="30"></RowDefinition>
-                                                <RowDefinition Height="30"></RowDefinition>
-                                                <RowDefinition Height="30"></RowDefinition>
-                                                <RowDefinition Height="30"></RowDefinition>
-                                                <RowDefinition Height="30"></RowDefinition>
-                                                <RowDefinition Height="30"></RowDefinition>
-                                                <RowDefinition Height="30"></RowDefinition>                                                
-                                            </Grid.RowDefinitions>
-                                            
-                                            <Label Content="A" Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="white" FontSize="18" FontWeight="Bold"/>
+                    </Border>
+                    
 
-                                            <Label Content="B" Grid.Row="1" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="white" FontSize="18" FontWeight="Bold"/>
+                    <Image Name="image1" Margin="20" Height="200" Source="/Vistas;component/images/logo-central2.png" OpacityMask="#C9000000" />
 
-                                            <Label Content="C" Grid.Row="2" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="white" FontSize="18" FontWeight="Bold"/>
-
-                                            <Label Content="D" Grid.Row="3" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="white" FontSize="18" FontWeight="Bold"/>
-
-                                            <Label Content="E" Grid.Row="4" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="white" FontSize="18" FontWeight="Bold"/>
-
-                                            <Label Content="F" Grid.Row="5" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="white" FontSize="18" FontWeight="Bold" Name="lblFilaF" />
-
-                                            <Label Content="G" Grid.Row="6" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="white" FontSize="18" FontWeight="Bold" Name="lblFilaG" />
-                                        </Grid>
-                                        <Grid Name="gridButacas">
-
-                                            <Grid.ColumnDefinitions>
-                                                
-                                                <ColumnDefinition Width="30"></ColumnDefinition>
-                                                <ColumnDefinition Width="30"></ColumnDefinition>
-                                                <ColumnDefinition Width="30"></ColumnDefinition>
-                                                <ColumnDefinition Width="30"></ColumnDefinition>
-                                                <ColumnDefinition Width="30"></ColumnDefinition>
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="30"></RowDefinition>
-                                                <RowDefinition Height="30"></RowDefinition>
-                                                <RowDefinition Height="30"></RowDefinition>
-                                                <RowDefinition Height="30"></RowDefinition>
-                                                <RowDefinition Height="30"></RowDefinition>
-                                                <RowDefinition Height="30"></RowDefinition>
-                                                <RowDefinition Height="30"></RowDefinition>                                                
-                                                
-                                            </Grid.RowDefinitions>                                                                                        
-                                        </Grid>
-                                    </StackPanel>                                    
-                                    <Button Name="btnCancelar" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="5" Content="CANCELAR" Margin="30,10,26,10" Style="{StaticResource ResourceKey=PlantillaBtnGrande}" Click="btnCancelar_Click"></Button>
-                                </StackPanel>
-
-                            </StackPanel>
-                            </Border>
-                        </StackPanel>
-
-                    </StackPanel>
-                    <!--Fin Stack Panel Principal-->
+                </StackPanel>
             </StackPanel>
             <!-- Fin cuadro de TICKETS -->
 

@@ -45,15 +45,17 @@
                             <ListView Name="grillaPeliculas" ItemsSource="{Binding Source={StaticResource VISTA_PELICULA}}" SelectionChanged="grillaPeliculas_SelectionChanged" MouseDoubleClick="grillaPeliculas_MouseDoubleClick" ToolTip="Haga Doble Click En Una Pelicula Para Modificar" FontFamily="Century Gothic" FontWeight="Bold">
                                 <ListView.View>
                                     <GridView>
-                                    <GridViewColumn Width="50" Header="ID" DisplayMemberBinding="{Binding Path=Pel_Id}"/>
-                                    <GridViewColumn Width="180" Header="TITULO" DisplayMemberBinding="{Binding Path=Pel_Titulo}"/>
+                                    <GridViewColumn Width="30" Header="ID" DisplayMemberBinding="{Binding Path=Pel_Id}"/>
+                                    <GridViewColumn Width="150" Header="TITULO" DisplayMemberBinding="{Binding Path=Pel_Titulo}"/>
                                     <GridViewColumn Width="100" Header="DURACION (min)" DisplayMemberBinding="{Binding Path=Pel_Duracion}"/>
                                     <GridViewColumn Width="100" Header="CLASIFICACION" DisplayMemberBinding="{Binding Path=Pel_Clasificacion}"/>
-                                    <GridViewColumn Width="100" Header="GENERO" DisplayMemberBinding="{Binding Path=Pel_Genero}"/>
-                                    </GridView>
+                                    <GridViewColumn Width="80" Header="GENERO" DisplayMemberBinding="{Binding Path=Pel_Genero}"/>
+                                    
+                                </GridView>
                                 </ListView.View>
                             </ListView>
-                        </StackPanel>
+                        <Image Height="90"  Name="image1" Stretch="Fill"  Width="542"  />
+                    </StackPanel>
                     <!--STACK PANEL BOTONES AGREGAR ELIMINAR-->
                     <StackPanel Orientation="Vertical">
                     <ToggleButton x:Name="AddToggleButton" Margin="5 0 5 0" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left" Height="40" Width="40" ToolTip="Agregar Pelicula" Background="Transparent" BorderBrush="Transparent" Checked="AddToggleButton_Checked">
@@ -93,11 +95,12 @@
                         <!--<StackPanel.Background>
                             <ImageBrush ImageSource="abc.gif" />
                         </StackPanel.Background>-->
-                        <Border BorderBrush="LightGray" BorderThickness="2" CornerRadius="10">
+                        <Border BorderBrush="LightGray" BorderThickness="2" CornerRadius="10" Width="209">
                             <StackPanel>
                                 <Label Name="lblTituloLateral" Content="AGREGAR PELICULA" Foreground="White" FontSize="15" HorizontalAlignment="Center"/>
                         <Separator></Separator>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,20,0">
+                             
                             <Label Name="lblTituloPeli" Content="Titulo" Foreground="White"/>
                                     <TextBox Width="100" Name="txtTitulo" DataContext="{StaticResource DEFAULT_PELICULA}" Style="{StaticResource EstiloErrorPelicula}">
                                         <TextBox.Text>
@@ -120,8 +123,19 @@
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,20,0">
                             <Label Name="lblClasificacion" Content="Clasificacion" Foreground="White" Margin="0,5,0,0"/>
                                     <ComboBox Width="100" Name="cbxClasificacion" ItemsSource="{Binding Source={StaticResource combo_clasificacion},XPath=tipo/@name}" DataContext="{StaticResource DEFAULT_PELICULA}" SelectedValue="{Binding Pel_Clasificacion}" Margin="0,5,10,0"/>
+                                   
                                 </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,10,0,10" Cursor="No">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Width="207">
+                                    <Label Name="lblImg" Content="Imagen:" Foreground="White" Margin="0,5,0,0" Width="61" />
+                                    <Button Name="btnAbrirImg"  Content="Seleccionar.." Style="{StaticResource PlantillaBtn}" Height="26" Width="153" Click="btnAbrirImg_Click" />
+                                   
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"  Width="207">
+                                    <Label Name="lblAvnc" Content="Trailer:" Foreground="White" Margin="0,5,0,0" Width="46" />
+                                    <Button Name="btnAbrirTrailer"  Content="Seleccionar" Style="{StaticResource PlantillaBtn}" Height="26" Width="80" Click="btnAbrirTrailer_Click" />
+                                    <Button Name="btnVerTrailer"  Content="VER" Style="{StaticResource PlantillaBtn}" Height="26" Width="77" Click="btnVerTrailer_Click" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,10,0,10" Cursor="No">
                             <Button Name="btnCancelar" Margin="5,5,5,5" Content="CANCELAR" Style="{StaticResource ResourceKey=PlantillaBtn}" Click="btnCancelar_Click" />
                             <Button Name="btnAgregar" Margin="10,5,5,5" Content="GUARDAR" Style="{StaticResource ResourceKey=PlantillaBtnPel}" Click="btnAgregar_Click" />
                         </StackPanel>

@@ -38,7 +38,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -125,6 +124,9 @@
     </Compile>
     <Compile Include="WinPeliculas.xaml.cs">
       <DependentUpon>WinPeliculas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinTrailer.xaml.cs">
+      <DependentUpon>WinTrailer.xaml</DependentUpon>
     </Compile>
     <Compile Include="WinVentaTicket.xaml.cs">
       <DependentUpon>WinVentaTicket.xaml</DependentUpon>
@@ -225,6 +227,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="WinTrailer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WinVentaTicket.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -247,7 +253,6 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -327,7 +332,16 @@
     <Resource Include="images\client_add.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="comboboxs\Estados.xml" />
+    <Resource Include="comboboxs\Horarios.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\pause.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

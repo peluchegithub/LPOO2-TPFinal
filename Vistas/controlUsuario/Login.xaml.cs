@@ -24,6 +24,8 @@ namespace Vistas.controlUsuario
             InitializeComponent();
         }
 
+
+
         public String Username
         {
             get { return txtUsuario.Text; }
@@ -31,14 +33,15 @@ namespace Vistas.controlUsuario
 
         public String Password
         {
-            get { return pwbPassword.Text; }
+            get { return pwdPassword.Password; }
         }
 
         private void txtUsuario_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
             {
-                pwbPassword.Focus();
+                pwdPassword.Focus();
+                // pwbPassword.Focus();
             }
         }
 
@@ -47,14 +50,25 @@ namespace Vistas.controlUsuario
             if (e.Key == Key.Return)
             {
                 Window parentWindow = Window.GetWindow(this);   //obtengo la ventada padre(winLogin)
-                Button btnIniciar=(Button)parentWindow.FindName("btnIniciar");   //busco en la ventana el boton iniciar
+                Button btnIniciar = (Button)parentWindow.FindName("btnIniciar");   //busco en la ventana el boton iniciar
+
                 btnIniciar.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));    //hago click en el boton iniciar
             }
+           // else
+             //   LimpiarCampos();
+             
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             txtUsuario.Focus();
+        }
+        private void LimpiarCampos()
+        {
+
+            txtUsuario.Clear();
+            pwdPassword.Clear();
+
         }
     }
 }

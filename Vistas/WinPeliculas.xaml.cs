@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 using ClasesBase;
 using System.Text.RegularExpressions;
 using System.Collections.ObjectModel;
+using Microsoft.Win32;
 
 namespace Vistas
 {
@@ -23,8 +24,10 @@ namespace Vistas
     {
         private CollectionViewSource vistaColeccionFiltrada;        
         ObservableCollection<Pelicula> listaPeliculas;
-
+        string ruta, rutaVideo;
+        Pelicula peliculaSeleccionada = new Pelicula();
         public WinPeliculas()
+
         {
             InitializeComponent();
             vistaColeccionFiltrada = Resources["VISTA_PELICULA"] as CollectionViewSource;
@@ -93,6 +96,7 @@ namespace Vistas
             txtDuracion.Clear();
             cbxClasificacion.SelectedValue = "ATP";
             cbxGenero.SelectedValue = "Accion";
+            image1.Source = null;
         }
 
         //VALIDACION SOLO NUMEROS (campo duracion)
@@ -111,8 +115,12 @@ namespace Vistas
             oPelicula.Pel_Duracion = int.Parse(txtDuracion.Text);
             oPelicula.Pel_Genero = cbxGenero.SelectedValue.ToString();
             oPelicula.Pel_Clasificacion = cbxClasificacion.SelectedValue.ToString();
+            oPelicula.Pel_imagen = ruta;
+            oPelicula.Pel_avance = rutaVideo;
+            
+          if (lblTituloLateral.Content.ToString() == "AGREGAR PELICULA")
 
-            if (lblTituloLateral.Content.ToString() == "AGREGAR PELICULA")
+            // if(TrabajarPeliculas.BuscarPelicula(oPelicula.Pel_Titulo) == false)
             {
                 //Agregar en DB
                 Id = TrabajarPeliculas.AgregarPelicula(oPelicula);
@@ -147,7 +155,7 @@ namespace Vistas
         //CUANDO CAMBIO DE PELICULA SELECCIONADA
         private void grillaPeliculas_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {            
-            Pelicula peliculaSeleccionada = grillaPeliculas.SelectedItem as Pelicula;
+             peliculaSeleccionada = grillaPeliculas.SelectedItem as Pelicula;
             if (peliculaSeleccionada != null)
             {
                 btnEliminar.Visibility = Visibility.Visible;
@@ -156,6 +164,10 @@ namespace Vistas
                 txtDuracion.Text = peliculaSeleccionada.Pel_Duracion.ToString();
                 cbxClasificacion.SelectedValue = peliculaSeleccionada.Pel_Clasificacion;
                 cbxGenero.SelectedValue = peliculaSeleccionada.Pel_Genero;
+               // Uri resourceUri = new Uri(peliculaSeleccionada.Pel_imagen, UriKind.Absolute);
+                // image1.Source = new BitmapImage(resourceUri);
+                ruta = peliculaSeleccionada.Pel_imagen;
+                rutaVideo = peliculaSeleccionada.Pel_avance;
             }
 
         }
@@ -198,7 +210,39 @@ namespace Vistas
                 txtDuracion.Text = peliculaSeleccionada.Pel_Duracion.ToString();
                 cbxClasificacion.SelectedValue = peliculaSeleccionada.Pel_Clasificacion;
                 cbxGenero.SelectedValue = peliculaSeleccionada.Pel_Genero;
+               // Uri resourceUri = new Uri(peliculaSeleccionada.Pel_imagen, UriKind.Absolute);
+               // image1.Source = new BitmapImage(resourceUri);
+                ruta = peliculaSeleccionada.Pel_imagen;
             }
+        }
+
+        private void btnAbrirImg_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            Nullable<bool> result = dlg.ShowDialog();
+            if (result == true)
+            {
+                //textBox_Dire.Text = dlg.FileName;
+                Uri resourceUri = new Uri(dlg.FileName, UriKind.Absolute);
+                image1.Source = new BitmapImage(resourceUri);
+                ruta = dlg.FileName;
+            }
+        }
+
+        private void btnVerTrailer_Click(object sender, RoutedEventArgs e)
+        {
+            WinTrailer wTrailer = new WinTrailer(peliculaSeleccionada);
+
+            wTrailer.Show();
+        }
+
+        private void btnAbrirTrailer_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Mp4 Files|*.mp4";
+            openFileDialog.ShowDialog();
+
+            rutaVideo = openFileDialog.FileName;
         }
 
     }

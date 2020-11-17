@@ -114,8 +114,8 @@ namespace Vistas
         private static void PasarSeleccionAventanaPadre(string butaca)
         {
             WinAltaTicket parent = Application.Current.Windows.OfType<WinAltaTicket>().FirstOrDefault();
-            //parent.btnSeleccionButaca.IsEnabled = false;
-            parent.txtFila.Text = butaca.Substring(0, 1);
+            parent.btnSeleccionButaca.IsEnabled = false;
+            parent.txtFila.Text = butaca.Substring(0,1);
             parent.txtNumero.Text = butaca.Substring(1);
             parent.btnConfirmar.IsEnabled = true;
         }

@@ -1,7 +1,9 @@
 ﻿<Window x:Class="Vistas.WinMenuAdmin"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+          xmlns:svc="clr-namespace:ClasesBase;assembly=ClasesBase"
         xmlns:control="clr-namespace:Vistas.controlUsuario"
+      
         Title="Cinemax - Administrador" Height="600" Width="900" ResizeMode="NoResize"
         Icon="/Vistas;component/images/icono-cine.ico"
         WindowStartupLocation="CenterScreen">
@@ -13,17 +15,43 @@
         </Grid.Background>
 
         <StackPanel>
-
+             
             <!-- Inicio control de usuario barra de menu -->
             <control:MenuAdmin x:Name="menuAdmin"/>
             <!-- Fin control de usuario de la barra de menu -->
 
             <Separator></Separator>
-            
-            <Image Name="image1" Height="530" Source="/Vistas;component/images/logo-central.png" />
+            <Label Content="00:00:00" FontFamily="Verdana" FontWeight="Bold" Height="50" FontSize="36" Foreground="Red"  Name="lbl_Hora" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <Label Content="jueves, 00 de Noviembre de 2020" Height="50" FontSize="32"  Name="lbl_Fecha"   Foreground="Red" FontWeight="Bold" FontFamily="Sitka Text" HorizontalAlignment="Center" />
+            <Image Name="image1" Height="369" Source="/Vistas;component/images/logo-central.png" Width="531" />
             
         </StackPanel>
+            <Border BorderBrush="LightGray" BorderThickness="2" CornerRadius="10">
+        <StackPanel Orientation="Vertical" >
+                <StackPanel Orientation="Vertical" Cursor="No"></StackPanel>
+               
+                <!--Inicio stack panel navegacion-->
+            </StackPanel>
+        </Border>
 
+        <StackPanel Orientation="Horizontal" Margin="24,135,703,319">
+            <MediaElement Name="meAudio"/>
+            <Button Name="btnPause" Style="{StaticResource ResourceKey=PlantillaBtnRedondo}" Click="btnPause_Click">
+                <Image Source="/Vistas;component/images/pause.png" Height="30" Width="20"></Image>
+            </Button>
+            <Button Name="btnPlay" Style="{StaticResource ResourceKey=PlantillaBtnRedondo}" Click="btnPlay_Click">
+                <Image Source="/Vistas;component/images/play.png" Width="20" Height="30" ></Image>
+            </Button>
+            <Button Name="btnStop"  Style="{StaticResource ResourceKey=PlantillaBtnRedondo}" Click="btnStop_Click">
+                <Image Source="/Vistas;component/images/stop.png" Height="30" Width="20"></Image>
+            </Button>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Margin="2,240,711,258">
+            <Label  Name="lblName" Content="" FontFamily="Verdana"  Height="30" FontSize="12" Foreground="Red" Width="121" />
+            <Button Name="btnLoadSong" Content="Cargar Tema"   Style="{StaticResource PlantillaBtnUsu}" Width="153" Click="btnLoadSong_Click" />
+       
+        </StackPanel>
+        
     </Grid>
     
 </Window>

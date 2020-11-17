@@ -32,6 +32,20 @@ namespace ClasesBase
             set { pel_Id = value; }
         }
         private string pel_Titulo;
+        private string pel_imagen;
+
+        public string Pel_imagen
+        {
+            get { return pel_imagen; }
+            set { pel_imagen = value; }
+        }
+        private string pel_avance;
+
+        public string Pel_avance
+        {
+            get { return pel_avance; }
+            set { pel_avance = value; }
+        }
 
         public string Pel_Titulo
         {

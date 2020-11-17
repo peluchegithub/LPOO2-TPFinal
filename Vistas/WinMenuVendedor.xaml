@@ -19,10 +19,12 @@
             <!-- Fin control de usuario de la barra de menu -->
 
             <Separator></Separator>
+            <Label Content="00:00:00" FontFamily="Verdana" FontWeight="Bold" Height="50" FontSize="36" Foreground="Red"  Name="label_Hora" VerticalAlignment="Center" />
+            <Label Content="jueves, 00 de Noviembre de 2020" Height="50" FontSize="32"  Name="label_Fecha"   Foreground="Red" FontWeight="Bold" FontFamily="Sitka Text"  />
+            <Image Name="image1" Width="535" Source="/Vistas;component/images/logo-central2.png" Height="276" />
             
-            <Image Name="image1" Width="780" Source="/Vistas;component/images/logo-central2.png" />
-        
         </StackPanel>
-
+       
     </Grid>
+    
 </Window>

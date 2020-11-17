@@ -40,12 +40,12 @@ namespace Vistas
             txbNombreCliente.Text = apellidoNombre.Split(',')[1];
             txbDNIcliente.Text = InfoCliente.Split('-')[0];
 
-            //Seccion Proyeccion "2D - fecha - hora - pelicula            
-            txbPelicula.Text = InfoProyeccion.Split('-')[3];
-            txbHoraProyeccion.Text = InfoProyeccion.Split('-')[2];
-            txbFechaProyeccion.Text = InfoProyeccion.Split('-')[1];
+            //Seccion Proyeccion            
+            txbPelicula.Text = InfoProyeccion.Split('-')[2];
+            txbHoraProyeccion.Text = InfoProyeccion.Split('-')[1];
+            txbFechaProyeccion.Text = InfoProyeccion.Split('-')[0];
             txbUbicacionProyeccion.Text = "Butaca " + ticket.But_Fila + ticket.But_Numero.ToString();
-            txbPrecio.Text = ticket.Tic_Precio.ToString();
+            
             //Seccion Vendedor
             txbVendedor.Text = vendedor;
         }

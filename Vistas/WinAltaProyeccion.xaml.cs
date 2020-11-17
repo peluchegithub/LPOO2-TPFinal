@@ -27,11 +27,17 @@ namespace Vistas
             if (result == MessageBoxResult.Yes)
             {
                 Proyeccion oProyeccion = new Proyeccion();
+                Sala sala = new Sala();
                 oProyeccion.Pro_Fecha = dtFecha.Text;
-                oProyeccion.Pro_Hora = txtHorario.Text;
-                String pelicula = txtPelicula.Text;
-                String sala = txtSala.Text;
-
+                oProyeccion.Pro_Hora = cbxHorario.Text;
+                String pelicula= cmbPeli.Text;
+                //sala. = txtSala.Text;
+                
+                oProyeccion.Sal_Id=sala.Sal_Id;
+                TrabajarProyecciones.AgregarProyeccion(oProyeccion);
+                WinAltaProyeccion oAbmPro = new WinAltaProyeccion();
+                oAbmPro.Show();
+                this.Close();
                 MessageBox.Show("Se guardaron los siguiente datos: \n" +
                     "\n PELICULA: " + pelicula +
                     "\n FECHA: " + oProyeccion.Pro_Fecha +
@@ -45,12 +51,16 @@ namespace Vistas
                 LimpiarCamposPelicula();
             }
         }
-
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            cmbPeli.ItemsSource = TrabajarPeliculas.TraerPeliCombo().DefaultView;
+            cmbPeli.SelectedIndex = 0;
+        }
         private void LimpiarCamposPelicula()
         {
-            txtPelicula.Clear();
-            txtHorario.Clear();
-            txtSala.Clear();
+           
+           
+            //txtSala.Clear();
         }
 
     }

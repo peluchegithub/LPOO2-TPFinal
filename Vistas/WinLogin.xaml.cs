@@ -21,41 +21,51 @@ namespace Vistas
             InitializeComponent();
         }
 
-        Usuario oAdmin = new Usuario();
-        Usuario oVendedor = new Usuario();
+        Usuario usuLogin = new Usuario();
+
+        TrabajarUsuarios tUsuario = new TrabajarUsuarios();
 
         private void btnIniciar_Click(object sender, RoutedEventArgs e)
         {
-            oAdmin.Usu_Username = "admin";
-            oAdmin.Usu_Password = "admin";
-            oVendedor.Usu_Username = "vendedor";
-            oVendedor.Usu_Password = "vendedor";
 
-            String pass = login.Username;
 
-            if(login.Username.Equals(oAdmin.Usu_Username) && pass.Equals(oAdmin.Usu_Password))
+            if (tUsuario.obtenerUsuario_BD(login.Username, login.Password) != null)
             {
-                WinMenuAdmin menuAdmin = new WinMenuAdmin();
-                menuAdmin.Show();
-                this.Close();
-            }
-            else
-            {
-                if (login.Username.Equals(oVendedor.Usu_Username) && pass.Equals(oVendedor.Usu_Password))
+
+                usuLogin = tUsuario.obtenerUsuario_BD(login.Username, login.Password);
+                if (usuLogin.Rol_Id == 1)
                 {
-                    WinMenuVendedor menuVendedor = new WinMenuVendedor();
-                    menuVendedor.vendedor = "vendedor";//luego se pasara de la base de datos                    
-                    menuVendedor.Show();
-                    
+                    //usuLogin = tUsuario.obtenerUsuario_BD(login.Username, login.Password);
+                    MessageBox.Show("Bienvenido al Sistema", "Bienvenido al Sistema", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    WinMenuAdmin menuAdmin = new WinMenuAdmin();
+                    menuAdmin.Show();
                     this.Close();
                 }
                 else
                 {
-                    lblError.Content = "Datos incorrectos";
+                    //usuLogin = tUsuario.obtenerUsuario_BD(login.Username, login.Password);
+                    MessageBox.Show("Bienvenido al Sistema", "Bienvenido al Sistema", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    WinMenuVendedor menuVendedor = new WinMenuVendedor();
+                    menuVendedor.Show();
+                    this.Close();
                 }
             }
+            else
+            {
+                MessageBox.Show("Usuario o Constraseña INCORRECTA", "ATENCION", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                LimpiarCampos();
+            }
+        }
+        private void LimpiarCampos()
+        {
+            
+            login.txtUsuario.Clear();
+            login.pwdPassword.Clear();
+
         }
 
-
+       
     }
 }

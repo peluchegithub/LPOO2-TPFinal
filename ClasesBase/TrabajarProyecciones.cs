@@ -47,7 +47,22 @@ namespace ClasesBase
             da.Fill(dt);
             return dt;
         }
-
+        public static void AgregarProyeccion(Proyeccion proyeccion)
+        {
+            SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.cinesConnectionString);
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "sp_agregar_proyeccion";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = cnn;
+            cmd.Parameters.AddWithValue("@fecha", proyeccion.Pro_Fecha);
+            cmd.Parameters.AddWithValue("@hora", proyeccion.Pro_Hora);
+            cmd.Parameters.AddWithValue("@idSal", proyeccion.Sal_Id);
+            cmd.Parameters.AddWithValue("@idPel", proyeccion.Pel_Id);
+            
+            cnn.Open();
+            cmd.ExecuteNonQuery();
+            cnn.Close();
+        }
         //COMBO FILTRO POR FECHA DE PROYECCION
         public static DataTable TraerProyeccionesComboFiltroFecha(DateTime? fechaSeleccionada)
         {            
@@ -66,27 +81,17 @@ namespace ClasesBase
             da.Fill(dt);
             return dt;
         }
-
-        //TRAE el PRECIO de una PROYECCION SEGUN IDPRoyeccion DE WIN ALTA TICKETS (VENTA DE TICKETS)    
-        public static decimal TraerPrecioProyeccionPorID(int idProyeccion)
+        public static DataTable listarProyeccion()
         {
-            decimal precio=0;//default
-
             SqlConnection cnn = new SqlConnection(ClasesBase.Properties.Settings.Default.cinesConnectionString);
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "SELECT PRO_precio FROM Proyeccion WHERE PRO_id=@id";
-            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "sp_listar_proyecciones";
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Connection = cnn;
-            cmd.Parameters.AddWithValue("@id", idProyeccion);
-            cnn.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                precio = (decimal)reader["PRO_precio"];                  
-            }
-            cnn.Close();
-
-            return precio;
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            return dt;
         }
     }
 }

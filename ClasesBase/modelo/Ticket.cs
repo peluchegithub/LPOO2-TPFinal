@@ -49,12 +49,5 @@ namespace ClasesBase
             get { return tic_FechaVenta; }
             set { tic_FechaVenta = value; }
         }
-
-        private decimal tic_Precio;
-        public decimal Tic_Precio
-        {
-            get { return tic_Precio; }
-            set { tic_Precio = value; }
-        }
     }
 }
