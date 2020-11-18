@@ -31,7 +31,7 @@
 
             <Separator></Separator>
             
-            <StackPanel Width="520" Margin="10">
+            <StackPanel Width="610" Margin="10">
                 <Label Name="lblTitulo" Content="LISTADO DE USUARIOS" Foreground="White" FontSize="20" HorizontalAlignment="Center"/>
                 <Separator></Separator>
                 <StackPanel Orientation="Horizontal">
@@ -47,6 +47,7 @@
                             <GridViewColumn Header="ROL" Width="100" DisplayMemberBinding="{Binding Usu_Rol.Rol_Descripcion}"/>
                             <GridViewColumn Header="USERNAME" Width="100" DisplayMemberBinding="{Binding Usu_Username}"/>
                             <GridViewColumn Header="CONTRASEÑA" Width="100" DisplayMemberBinding="{Binding Usu_Password}"/>
+                            <GridViewColumn Header="ESTADO" Width="100" DisplayMemberBinding="{Binding Usu_Estado}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>

@@ -54,16 +54,18 @@ namespace ClasesBase
             Notificador(usu_Username);
             }
         }
-        private int rol_Id;
-        public int Rol_Id
+
+        private string usu_Estado;
+
+        public string Usu_Estado
         {
-            get { return rol_Id; }
+            get { return usu_Estado; }
             set
             {
-                rol_Id = value;
-                Notificador(rol_Id.ToString());
+                usu_Estado = value;
             }
         }
+
         //Implementacion de la interface IDataErrorInfo
         public string Error
         {

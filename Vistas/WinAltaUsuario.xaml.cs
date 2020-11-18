@@ -61,28 +61,35 @@ namespace Vistas
 
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {   
-
             Usuario oUsuario = new Usuario();
             Rol oRol = new Rol();
-            oUsuario.Usu_ApellidoNombre = txtApellido.Text;
-            if (cbxRol.SelectedValue.ToString() == "Administrador")
-            {
-                oRol.Rol_Id = 1;
-                oRol.Rol_Descripcion = "administrador";
+            if (txtApellido.Text !="" && txtUsername.Text !="" && txtPassword.Text !="" && cbxRol.Text !="")
+            {                            
+                oUsuario.Usu_ApellidoNombre = txtApellido.Text;
+                if (cbxRol.SelectedValue.ToString() == "administrador")
+                {
+                    oRol.Rol_Id = 1;
+                    oRol.Rol_Descripcion = "administrador";
+                }
+                else
+                {
+                    oRol.Rol_Id = 2;
+                    oRol.Rol_Descripcion = "vendedor";
+                }
+                oUsuario.Usu_Rol = oRol;
+                oUsuario.Usu_Username = txtUsername.Text;
+                oUsuario.Usu_Password = txtPassword.Text;
+                oUsuario.Usu_Estado = "Activo";
+                TrabajarUsuarios.AgregarUsuario(oUsuario);
+
+                WinAbmUsuario oAbmUsuario = new WinAbmUsuario();
+                oAbmUsuario.Show();
+                this.Close();
             }
             else
             {
-                oRol.Rol_Id = 2;
-                oRol.Rol_Descripcion = "vendedor";
+                MessageBox.Show("Por Favor ingrese todos los datos requeridos");
             }
-            oUsuario.Usu_Rol = oRol;
-            oUsuario.Usu_Username = txtUsername.Text;
-            oUsuario.Usu_Password = txtPassword.Text;
-            TrabajarUsuarios.AgregarUsuario(oUsuario);
-
-            WinAbmUsuario oAbmUsuario = new WinAbmUsuario();
-            oAbmUsuario.Show();
-            this.Close();
         }
 
         private void btnListadoUsuarios_Click(object sender, RoutedEventArgs e)

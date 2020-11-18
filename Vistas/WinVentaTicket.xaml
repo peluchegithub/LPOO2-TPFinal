@@ -4,7 +4,7 @@
         Title="WinVentaTicket" Height="470" Width="585" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
                 
 
- <!-- <FixedDocument>-->
+  <FixedDocument>
      <PageContent>
         <FixedPage  Height="340" Width="540">
 
@@ -42,6 +42,9 @@
 
         <Label Content="Ubicacion:" FixedPage.Left="45" FixedPage.Top="245"></Label>
         <TextBlock Name="txbUbicacionProyeccion" FixedPage.Left="110" FixedPage.Top="252" Text="Butaca A3" FontFamily="Consolas" />
+
+        <Label Content="Precio: $ " FixedPage.Left="45" FixedPage.Top="270"></Label>
+        <TextBlock Name="txbPrecio" FixedPage.Left="110" FixedPage.Top="277" Text="100" FontFamily="Consolas" />
         <!--FIN PROYECCION-->
 
         <!--INICIO CLIENTE-->
@@ -63,7 +66,7 @@
         <!--FIN VENDEDOR-->
       </FixedPage>
     </PageContent>
- <!--</FixedDocument>-->
+ </FixedDocument>
     
 </Window>
 

@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:data="clr-namespace:ClasesBase;assembly=ClasesBase"
         xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
-        Title="Vista Previa Impresion" Height="300" Width="700" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+        Title="Vista Previa Impresion" Height="300" Width="800" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
         <ObjectDataProvider 
@@ -19,8 +19,8 @@
         </CollectionViewSource>
     </Window.Resources>
 
-    <StackPanel Width="649">
-        <FlowDocumentReader Canvas.Left="12" Canvas.Top="28" Width="650" Height="226">
+    <StackPanel  Width="750">
+        <FlowDocumentReader  Canvas.Left="12" Canvas.Top="28" Width="694"  Height="226">
             <FlowDocument Name="DocMain">
                 <Paragraph FontFamily="Arial" FontSize="16pt">              
                         <Bold>Listado de Usuarios</Bold>                        
@@ -35,6 +35,7 @@
                                     <GridViewColumn Header="USERNAME" Width="103" DisplayMemberBinding="{Binding Usu_Username}"/>
                                     <GridViewColumn Header="CONTRASEÑA" Width="120" DisplayMemberBinding="{Binding Usu_Password}"/>
                                     <GridViewColumn Header="ROL" Width="120" DisplayMemberBinding="{Binding Usu_Rol.Rol_Descripcion}"/>
+                                    <GridViewColumn Header="ESTADO" Width="140" DisplayMemberBinding="{Binding Usu_Estado}"/>
                                 </GridView.Columns>
                             </GridView>
                         </ListView.View>
